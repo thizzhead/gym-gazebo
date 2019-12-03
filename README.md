@@ -129,3 +129,34 @@ We recommend creating an alias to kill those processes.
 ```bash
 echo "alias killgazebogym='killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient'" >> ~/.bashrc
 ```
+
+## For in case you are running inside a container: 
+
+- Load the environment variables corresponding to the robot you want to launch. E.g. to load the Turtlebot:
+
+```bash
+cd gym_gazebo/gym_gazebo/envs/installation
+bash turtlebot_setup.bash
+```
+
+Note: all the setup scripts are available in `gym_gazebo/gym_gazebo/envs/installation`
+
+- Run any of the examples available in `gym_gazebo/examples/`. E.g.:
+
+```bash
+cd gym_gazebo/examples/scripts_turtlebot
+python circuit2_turtlebot_lidar_qlearn.py
+
+### Display the simulation
+
+To see what's going on in Gazebo during a simulation, run gazebo client. In order to launch the `gzclient` and be able to connect it to the running `gzserver`:
+1. Open a new terminal.
+2. Source the corresponding setup script, which will update the _GAZEBO_MODEL_PATH_ variable: e.g. `source setup_turtlebot.bash`
+
+
+Finally, launch gzclient.
+```bash
+gzclient
+
+```
+```
